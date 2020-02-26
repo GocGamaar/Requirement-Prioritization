@@ -1,36 +1,57 @@
-Req ID,Req Name,Description,Pre-requisite,Cost,Value
-101,URL,Unique web address to access the website,NULL,8,4
-102,Choose Region Modal,To choose the city inorder to proceed,101,,
-103,Home Page,Contains various...,102,,
-104,Change Region,Enables to change the city,103,,
-105,Search,To perform search ,103,,
-106,Search Results,Displays the search results,105,,
-107,Login Button,Sign in to the system for existing users,103,,
-108,Forgot Password,To enable sign in when user forgets password,107,,
-109,Continue with Facebook,To login with Facebook account,107,,
-110,Continue with Google,To login with Google account,107,,
-111,Continue with mobile number or email id,To login with mobile number or email id,107,,
-112,Sign Up,To enable registration for a new user,107,,
-113,Category,To choose from various category,103,,
-114,Category List, To view the various choices in each category,112,,
-115,Customer Care,To connect with support center,103,,
-116,Resend Booking Confirmation,To resend confirmation details,103,,
-117,Subscribe to Newsletters,To initiate free subscripton to the Newsletter,103,,
-118,Best language genre movies,Quick view to the best genre movies according to language,103,,
-119,Movies by Genre,To quickly view to the movies by genre,103,,
-120,Popular movies by language,Quick view to the popular movies by language,103,,
-121,Trending Movies Reviews,Displays the popular movie reviews in general,103,,
-122,To do in the region,To view the the things to do in the selected region,103,,
-123,Event tickets,To quickly book event tickets online,103,,
-124,Archived Collection,To view the archived stuff,103,,
-125,BookMyShow App,Quick links to the android and ios applications,103,,
-126,Help,To get the site related queries cleared,103,,
-127,Select Movie,To select a particular movie,114,,
-128,Movie Details,To view the movie details,127,,
-129,Movie's Trending Stories,To display the trending stories related to the movie,127,,
-130,View Movie Reviews,To view the movie reviews,127,,
-131,Rate Movie ,To enable the user to post ratings,127,,
-132,Share Movie ,To share movie in social media,127,,
-133,Book Ticket,To book tickets for a movie,127,,
-134,Corporate Booking,To request for corporate booking,127,,
-135,Applicable Offers,"Displays applicable offers, if any",127,,
+Req ID,Req Name,Description,Pre-requisite,Cost,Value,Test Cases,Importance
+101,URL,Unique web address to access the website,0,8,9,3,H
+102,Choose Region Modal,To choose the city inorder to proceed,101,3,2,3,H
+103,Home Page,Contains various...,102,7,8,5,H
+104,Change Region,Enables to change the city,103,4,3,1,M
+105,Search,To perform search ,103,6,7,2,H
+106,Search Results,Displays the search results,105,7,8,1,H
+107,Login Button,Sign in to the system for existing users,103,6,3,4,L
+108,Forgot Password,To enable sign in when user forgets password,107,5,4,0,L
+109,Continue with Facebook,To login with Facebook account,107,7,1,0,L
+110,Continue with Google,To login with Google account,107,7,3,0,L
+111,Continue with mobile number or email id,To login with mobile number or email id,107,5,6,0,M
+112,Sign Up,To enable registration for a new user,107,6,4,3,M
+113,Category,To choose from various category,103,4,3,1,H
+114,Category List, To explore the various choices in each category,112,5,7,1,M
+115,Customer Care,To connect with support center,103,7,2,0,L
+116,Resend Booking Confirmation,To resend confirmation details,103,,,,
+117,Subscribe to Newsletters,To initiate free subscripton to the Newsletter,103,,,,
+118,Best language genre movies,Quick view to the best genre movies according to language,103,,,,
+119,Movies by Genre,To quickly view to the movies by genre,103,,,,
+120,Popular movies by language,Quick view to the popular movies by language,103,,,,
+121,Trending Movies Reviews,Displays the popular movie reviews in general,103,,,,
+122,To do in the region,To view the the things to do in the selected region,103,,,,
+123,Event tickets,To quickly book event tickets online,103,,,,
+124,Archived Collection,To view the archived stuff,103,,,,
+125,BookMyShow App,Quick links to the android and ios applications,103,,,,
+126,Help,To get the site related queries cleared,103,,,,
+127,Select Movie,To select a particular movie,114,,,,
+128,Movie Details,To view the movie details,127,,,,
+129,Movie's Trending Stories,To display the trending stories related to the movie,127,,,,
+130,View Movie Reviews,To view the movie reviews,127,,,,
+131,Rate Movie ,To enable the user to post ratings,127,,,,
+132,Share Movie ,To share movie in social media,127,,,,
+133,Book Ticket,To book tickets for a movie,127,,,,
+134,Corporate Booking,To request for corporate booking,127,,,,
+135,Applicable Offers,"Displays applicable offers, if any",127,,,,
+136,Select Show Time,To select the desired show time,133,,,,
+137,Terms and Conditions,To perform either 'Accept' or 'Cancel' with Terms,136,,,,
+138,Number of Seats,Gets the number of seats to proceed with selection,137,,,,
+139,Select Seats,To select the desired seats based on availabiity,138,,,,
+140,Prebook Food,Optional pre booking of food to be delivered at the seat,139,,,,
+141,Review Booking Summary,To review the booking details,139,,,,
+142,Select Ticket Type,To choose between M-ticket and box office pickup,139,,,,
+143,Proceed for Payment,To proceed with the payment process,142,,,,
+144,Share Contact Details,To communicate the booking details for those who aren't logged in,143,,,,
+145,Apply Promocode,To unlock offers and apply promocodes (if any),143,,,,
+146,Payment Method,To choose a particular mode of payment,143,,,,
+147,Payment Timer,Displays the time left to complete the transaction,143,,,,
+148,Quikpay,To proceed with Quikpay for payment,,,,,
+149,Credit/Debit Card,To proceed with credit or debit card payment,,,,,
+150,Netbanking,To proceed with Netbanking for payment,,,,,
+151,Mobile Wallets,To pay using mobile wallets,,,,,
+152,UPI,,,,,,
+153,Gift Vouchers,,,,,,
+154,Redeem Points,,,,,,
+155,Credit Vouchers,,,,,,
+156,Earn Loyalty Points,,,,,,
