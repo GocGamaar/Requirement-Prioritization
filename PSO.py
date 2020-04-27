@@ -2,7 +2,7 @@
 # Modified to fit this project
 
 import numpy as np
-from .transformer import fn_transformer
+from transformer import fn_transformer
 
 '''
 If you are running runPSO.py, change the previous line with:
