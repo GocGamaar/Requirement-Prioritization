@@ -65,7 +65,7 @@ class PSO():
 	def update_gbest(self):
 		if self.gbest_y < self.Y.max():
 			self.gbest_x = self.X[self.Y.argmin(), :].copy()
-			self.gbest_y = self.Y.min()
+			self.gbest_y = self.Y.max()
 
 	def recorder(self):
 		if not self.record_mode:
