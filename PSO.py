@@ -78,7 +78,6 @@ class PSO():
 		print("Running PSO...")
 		self.max_iter = max_iter or self.max_iter
 		for iter_num in range(self.max_iter):
-			print("\tIteration ",iter_num," complete")
 			self.update_V()
 			self.recorder()
 			self.update_X()
