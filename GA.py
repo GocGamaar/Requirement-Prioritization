@@ -2,6 +2,8 @@
 # Modified to fit this project
 
 import numpy as np
+import matplotlib.pyplot as plt
+import time
 
 class GeneticAlgorithm():
 	def __init__(self, fitness_function, pop_size=10, genome_length=20, lb=None, ub=None):
@@ -20,6 +22,8 @@ class GeneticAlgorithm():
 
 		self.lb = -np.ones(self.genome_length) if lb is None else np.array(lb)
 		self.ub = np.ones(self.genome_length) if ub is None else np.array(ub)
+
+		self.xaxis=[]; self.yaxis=[];
 
 	def generate_binary_population(self):
 		self.population = np.array(
@@ -42,7 +46,19 @@ class GeneticAlgorithm():
 
 	def get_best_genome(self):
 		self.best_genome = np.argmax(self.fitness_vector)
+		# print( np.argmax(self.fitness_vector) )
 		return self.population[self.best_genome], self.fitness_vector[self.best_genome]
+
+	def timeplot(self):
+		plt.figure( figsize=(25, 9))
+		plt.xlabel("No of Iterations")
+		plt.ylabel("Time for iteration")
+		plt.plot(self.xaxis, self.yaxis,
+			linewidth=4.0, color="#A569BD",
+			marker="o", mfc="#D2B4DE")
+		plt.savefig('graphs/GA time.png')
+		plt.show()
+
 
 	def run(self, iterations=1):
 		if self.population is None:
@@ -51,17 +67,22 @@ class GeneticAlgorithm():
 			raise RuntimeError("The number of pairs (number_of_pairs) to be generated has not been configured.")
 
 		for iteration in range(iterations):
+			before = time.time()
 			parent_pairs = self._select_parents(self.number_of_pairs, self._get_parent_probabilities())
 			for parent_pair in parent_pairs:
 				children = self._generate_children(parent_pair)
 				mutated_children = [self._mutate(child, self.mutation_rate) for child in children]
-				# Possible changes here (combine with tabu search?)
 				for child in mutated_children:
 					child_fitness = self.get_fitness(child)
 					worst_genome = np.argmin(self.fitness_vector)
 					if self.get_fitness_vector()[worst_genome] < child_fitness:
 						self.population[worst_genome] = child
 						self.get_fitness_vector()[worst_genome] = child_fitness
+			self.xaxis.append( iteration )
+			self.yaxis.append( time.time()-before )
+
+		self.timeplot()
+
 
 	def _get_parent_probabilities(self):
 		relative_fitness = self.fitness_vector / np.sum(self.fitness_vector)

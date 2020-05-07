@@ -3,9 +3,11 @@
 
 import numpy as np
 from transformer import fn_transformer
+import matplotlib.pyplot as plt
+import time
 
 '''
-If you are running runPSO.py, change the previous line with:
+If you are running runPSO.py, modify the line to:
 # from transformer import fn_transformer
 '''
 
@@ -39,6 +41,8 @@ class PSO():
 		# record verbose values
 		self.record_mode = False
 		self.record_value = {'X': [], 'V': [], 'Y': []}
+
+		self.xaxis = []; self.yaxis = []
 
 	def update_V(self):
 		r1 = np.random.rand(self.pop, self.dim)
@@ -74,18 +78,32 @@ class PSO():
 		self.record_value['V'].append(self.V)
 		self.record_value['Y'].append(self.Y)
 
+	def timeplot(self):
+		plt.figure( figsize=(25, 9))
+		plt.xlabel("No of Iterations")
+		plt.ylabel("Time for iteration")
+		plt.plot(self.xaxis, self.yaxis,
+			linewidth=4.0, color="#D5DBDB",
+			marker="o", mfc="#34495E")
+		plt.savefig('graphs/PSO time.png')
+		plt.show()
+
 	def run(self, max_iter=None):
 		print("Running PSO...")
 		self.max_iter = max_iter or self.max_iter
 		for iter_num in range(self.max_iter):
+			before = time.time()
 			self.update_V()
 			self.recorder()
 			self.update_X()
 			self.cal_y()
 			self.update_pbest()
 			self.update_gbest()
+			self.xaxis.append( iter_num )
+			self.yaxis.append( time.time()-before )
 
 		self.gbest_y_hist.append(self.gbest_y)
+		self.timeplot()
 		return self
 
 	fit = run
