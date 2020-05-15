@@ -27,9 +27,9 @@ class PSO():
 		assert self.dim == len(self.lb) == len(self.ub), 'dim == len(lb) == len(ub) is not True'
 		assert np.all(self.ub > self.lb), 'upper-bound must be greater than lower-bound'
 
-		self.X = np.random.uniform(low=self.lb, high=self.ub, size=(self.pop, self.dim))
-		v_high = self.ub - self.lb
-		self.V = np.random.uniform(low=-v_high, high=v_high, size=(self.pop, self.dim))  # speed of particles
+		self.X = np.random.randint(self.lb+1, self.ub+1, size=(self.pop, self.dim) )
+		self.V = np.random.randint(self.lb+1, self.ub+1, size=(self.pop, self.dim) )
+
 		self.Y = self.cal_y()  # y = f(x) for all particles
 		self.pbest_x = self.X.copy()  # personal best location of every particle in history
 		self.pbest_y = self.Y.copy()  # best image of every particle in history
@@ -45,8 +45,8 @@ class PSO():
 		self.xaxis = []; self.yaxis = []
 
 	def update_V(self):
-		r1 = np.random.rand(self.pop, self.dim)
-		r2 = np.random.rand(self.pop, self.dim)
+		r1 = np.random.randint(1, size=(self.pop, self.dim) )
+		r2 = np.random.randint(1, size=(self.pop, self.dim) )
 		self.V = self.w * self.V + \
 		self.cp * r1 * (self.pbest_x - self.X) + \
 		self.cg * r2 * (self.gbest_x - self.X)
@@ -68,7 +68,7 @@ class PSO():
 
 	def update_gbest(self):
 		if self.gbest_y < self.Y.max():
-			self.gbest_x = self.X[self.Y.argmin(), :].copy()
+			self.gbest_x = self.X[self.Y.argmax(), :].copy()
 			self.gbest_y = self.Y.max()
 
 	def recorder(self):
@@ -89,7 +89,6 @@ class PSO():
 		plt.show()
 
 	def run(self, max_iter=None):
-		print("Running PSO...")
 		self.max_iter = max_iter or self.max_iter
 		for iter_num in range(self.max_iter):
 			before = time.time()

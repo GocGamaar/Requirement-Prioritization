@@ -26,9 +26,7 @@ class GeneticAlgorithm():
 		self.xaxis=[]; self.yaxis=[];
 
 	def generate_binary_population(self):
-		self.population = np.array(
-			[ x for x in np.random.randint(self.lb , self.ub, (self.pop_size, self.genome_length) ) ]
-			)
+		self.population = np.random.randint( self.lb+1, self.ub+1, size=(self.pop_size, self.genome_length) )
 		self._update_fitness_vector()
 		return self.population
 
@@ -50,7 +48,7 @@ class GeneticAlgorithm():
 		return self.population[self.best_genome], self.fitness_vector[self.best_genome]
 
 	def timeplot(self):
-		plt.figure( figsize=(25, 9))
+		plt.figure( figsize=(20, 5))
 		plt.xlabel("No of Iterations")
 		plt.ylabel("Time for iteration")
 		plt.plot(self.xaxis, self.yaxis,
