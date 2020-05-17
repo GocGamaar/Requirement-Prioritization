@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import time
 
 class GeneticAlgorithm():
-	def __init__(self, fitness_function, pop_size=10, genome_length=20, lb=None, ub=None):
+	def __init__(self, fitness_function, pop_size=10, genome_length=20, lb=None, ub=None, timeplotbool = True):
 		self.population = None
 		self.fitness_function = fitness_function
 		self.number_of_pairs = None
@@ -24,6 +24,7 @@ class GeneticAlgorithm():
 		self.ub = np.ones(self.genome_length) if ub is None else np.array(ub)
 
 		self.xaxis=[]; self.yaxis=[];
+		self.timeplotbool = timeplotbool;
 
 	def generate_binary_population(self):
 		self.population = np.random.randint( self.lb+1, self.ub+1, size=(self.pop_size, self.genome_length) )
@@ -78,8 +79,8 @@ class GeneticAlgorithm():
 						self.get_fitness_vector()[worst_genome] = child_fitness
 			self.xaxis.append( iteration )
 			self.yaxis.append( time.time()-before )
-
-		self.timeplot()
+		if self.timeplotbool:
+			self.timeplot()
 
 
 	def _get_parent_probabilities(self):

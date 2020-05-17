@@ -13,7 +13,7 @@ If you are running runPSO.py, modify the line to:
 
 
 class PSO():
-	def __init__(self, func, dim, pop=40, max_iter=150, lb=None, ub=None, w=0.8, c1=0.5, c2=0.5):
+	def __init__(self, func, dim, pop=40, max_iter=150, lb=None, ub=None, w=0.8, c1=0.5, c2=0.5, timeplotbool=True):
 		self.func = fn_transformer(func)
 		self.w = w  # inertia
 		self.cp, self.cg = c1, c2  # parameters to control personal best, global best respectively
@@ -42,7 +42,8 @@ class PSO():
 		self.record_mode = False
 		self.record_value = {'X': [], 'V': [], 'Y': []}
 
-		self.xaxis = []; self.yaxis = []
+		self.xaxis = []; self.yaxis = [];
+		self.timeplotbool = timeplotbool;
 
 	def update_V(self):
 		r1 = np.random.randint(1, size=(self.pop, self.dim) )
@@ -102,7 +103,8 @@ class PSO():
 			self.yaxis.append( time.time()-before )
 
 		self.gbest_y_hist.append(self.gbest_y)
-		self.timeplot()
+		if self.timeplotbool:
+			self.timeplot()
 		return self
 
 	fit = run
