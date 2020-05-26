@@ -23,4 +23,8 @@ app.get("/rawdata", (req, res)=>{
     res.end();
   });
 });
+
 app.listen(4000)
+
+console.log("Server is running at http://127.0.0.1:4000/");
+console.log("Press Ctrl+C to shut down..");
