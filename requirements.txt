@@ -23,6 +23,7 @@ jupyter-core==4.6.3
 jupyterlab-pygments==0.1.2
 kiwisolver==1.2.0
 MarkupSafe==1.1.1
+matplotlib==3.3.2
 mistune==0.8.4
 nbclient==0.5.1
 nbconvert==6.0.7
@@ -37,6 +38,7 @@ parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==8.0.1
+pkg-resources==0.0.0
 prometheus-client==0.8.0
 prompt-toolkit==3.0.8
 ptyprocess==0.6.0
