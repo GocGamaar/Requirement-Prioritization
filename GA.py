@@ -2,7 +2,7 @@
 # Modified to fit this project
 
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import time
 
 class GeneticAlgorithm():
@@ -27,7 +27,8 @@ class GeneticAlgorithm():
 		self.timeplotbool = timeplotbool;
 
 	def generate_binary_population(self):
-		self.population = np.random.randint( self.lb+1, self.ub+1, size=(self.pop_size, self.genome_length) )
+		# self.population = np.array([[not not x for x in line] for line in np.random.randint(self.lb+1, self.ub+1, (self.pop_size, self.genome_length))])
+		self.population = np.random.randint( self.lb, self.ub+1, size=(self.pop_size, self.genome_length) )
 		self._update_fitness_vector()
 		return self.population
 

@@ -1,2 +1,9 @@
 .ipynb_checkpoints
+*/.ipynb_checkpoints
+*/*/.ipynb_checkpoints
 __pycache__
+express/node_modules/
+express/package-lock.json
+Screenshot/
+BMS Requirements.py
+env/

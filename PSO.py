@@ -3,7 +3,7 @@
 
 import numpy as np
 from transformer import fn_transformer
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import time
 
 '''
